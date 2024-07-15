@@ -5,50 +5,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 dotenv.config();
 
-const todos = [
-  {
-    id: 1,
-    task: "Buy groceries",
-    isCompleted: false,
-    description: "Purchase fruits, vegetables, and dairy products.",
-  },
-  {
-    id: 2,
-    task: "Clean the house",
-    isCompleted: true,
-    description:
-      "Vacuum the living room, clean the bathrooms, and dust the furniture.",
-  },
-  {
-    id: 3,
-    task: "Finish homework",
-    isCompleted: false,
-    description:
-      "Complete math exercises and write an essay for English class.",
-  },
-  {
-    id: 4,
-    task: "Pay bills",
-    isCompleted: true,
-    description: "Pay the electricity, water, and internet bills online.",
-  },
-  {
-    id: 5,
-    task: "Call mom",
-    isCompleted: false,
-    description: "Have a chat with mom and update her on the recent events.",
-  },
-  {
-    id: 6,
-    task: "Schedule dentist appointment",
-    isCompleted: true,
-    description:
-      "Call the dentist office and set an appointment for the dental check-up.",
-  },
-];
+const todos = [];
 
 // get all todos
 app.get("/todos", (req, res) => {
+  if (!todos) {
+    res.send("Empty list pls add some todos using post request...");
+  }
   res.json(todos);
 });
 
