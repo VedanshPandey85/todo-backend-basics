@@ -9,10 +9,11 @@ const todos = [];
 
 // get all todos
 app.get("/todos", (req, res) => {
-  if (!todos) {
+  if (todos.length <= 0) {
     res.send("Empty list pls add some todos using post request...");
+  } else {
+    res.json(todos);
   }
-  res.json(todos);
 });
 
 //get todos using id
